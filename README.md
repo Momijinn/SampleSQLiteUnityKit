@@ -36,7 +36,7 @@ SQLiteUnityKitを使用しています
 
 6. データベースを操作するためのスクリプトファイルを作成する  
    ここでは**Database.cs**とする  
-   ```csharp, c#:Database.cs
+   ```
    using UnityEngine;
    using System.Collections;
    
