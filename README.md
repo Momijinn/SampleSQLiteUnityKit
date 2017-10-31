@@ -1,16 +1,27 @@
-# SampleSQLiteUnityKit
-Unityにおけるデータベースを操作するためのプログラム  
-SQLiteUnityKitを使用しています  
+ SampleSQLiteUnityKit
+====
+Unityにおけるデータベースを操作するためのプログラム
 
-# 動作環境
-* Unity 5.4.1.f1
-* SQLite
+## Description
+UnityにおいてSQLiteUnityKitを使用したデータベースを操作するためのデモプログラム
 
-# 導入方法
-1. データベースを作成するために、SQLiteのツールをダウンロードする  
-   [ここ](https://sqlite.org/2016/sqlite-tools-win32-x86-3150200.zip)  
+## Requirement
+* [SQLite](https://sqlite.org/2016/sqlite-tools-win32-x86-3150200.zip)
+* SQLiteのバイナリ
+* [SQLiteUnityKit](https://github.com/Busta117/SQLiteUnityKit)
 
-   展開し、展開したディレクトリでcmdを開く  
+* 動作確認環境
+    * Unity 5.4.1.f1
+    * SQLite
+
+## Usage
+使い方
+
+## Install
+1. データベースを作成するために、SQLiteのツールをダウンロードする
+   [ここ](https://sqlite.org/2016/sqlite-tools-win32-x86-3150200.zip)
+
+   展開し、展開したディレクトリでcmdを開く
    以下のコマンドを打つ(データベースを作成している)
    ```
    C:\sqlite-tools-win32-x86-3150200> sqlite3 config.db
@@ -18,28 +29,28 @@ SQLiteUnityKitを使用しています
    sqlite> .exit
    ```
 
-2. SQLiteUnityKitをクローンまたはダウンロードする  
+2. SQLiteUnityKitをクローンまたはダウンロードする
    [ここ](https://github.com/Busta117/SQLiteUnityKit)
 
-3. SQLiteのバイナリをダウンロードする  
-   windows32bitの場合：<https://sqlite.org/2016/sqlite-dll-win32-x86-3150200.zip>  
-   windows64bitの場合：<https://sqlite.org/2016/sqlite-dll-win64-x64-3150200.zip>  
+3. SQLiteのバイナリをダウンロードする
+   windows32bitの場合：<https://sqlite.org/2016/sqlite-dll-win32-x86-3150200.zip>
+   windows64bitの場合：<https://sqlite.org/2016/sqlite-dll-win64-x64-3150200.zip>
 
 4. Unityを開く
 
-5. Assetsに各種ダウンロードしたファイル以下のように入れる  
-   Assets\Plugin\Android\libsqlite3.so  
-   (32bitの場合)Assets\Plugin\x86\sqlite3.dll  
-   (64bitの場合)Assets\Plugin\x64\sqlite3.dll  
-   Assets\Script\DataTable.cs  
-   Assets\Script\SqliteDatabase.cs  
+5. Assetsに各種ダウンロードしたファイル以下のように入れる
+   Assets\Plugin\Android\libsqlite3.so
+   (32bitの場合)Assets\Plugin\x86\sqlite3.dll
+   (64bitの場合)Assets\Plugin\x64\sqlite3.dll
+   Assets\Script\DataTable.cs
+   Assets\Script\SqliteDatabase.cs
 
-6. データベースを操作するためのスクリプトファイルを作成する  
-   ここでは**Database.cs**とする  
+6. データベースを操作するためのスクリプトファイルを作成する
+   ここでは**Database.cs**とする
    ```
    using UnityEngine;
    using System.Collections;
-   
+
    public class Database : MonoBehaviour {
 
        // Use this for initialization
@@ -48,11 +59,11 @@ SQLiteUnityKitを使用しています
       SqliteDatabase sqlDB = new SqliteDatabase("config.db");
       string query = "insert into user values(1, 'hoge', 20, 'america')";
       sqlDB.ExecuteNonQuery(query);
-      
+
       // Select
       string selectQuery = "select * from user";
       DataTable dataTable = sqlDB.ExecuteQuery(selectQuery);
-      
+
       string name = "";
       foreach(DataRow dr in dataTable.Rows){
           name = (string)dr["name"];
@@ -67,7 +78,15 @@ SQLiteUnityKitを使用しています
 
 7. GameObjectを作成し、作成したスクリプトをAddComponentする
 
-# 参考文献
+## 参考文献
 1. <http://ameblo.jp/mk-soundtrack/entry-12086698310.html>
 2. <http://qiita.com/hiroyuki7/items/5335e391c9ed397aee50>
 3. <http://pro132007.wp.xdomain.jp/unitysqlite%E3%82%92%E4%BD%BF%E3%81%86-%E3%81%9D%E3%81%AE1/>
+
+## Licence
+This software is released under the MIT License, see LICENSE.
+
+## Author
+[Twitter](https://twitter.com/momijinn_aka)
+
+[Blog](http://www.autumn-color.com/)
